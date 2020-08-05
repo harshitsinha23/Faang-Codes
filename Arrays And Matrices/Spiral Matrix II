@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        
+        vector<vector<int> > v(n,vector<int>(n));
+        
+        
+        int i = 0, j = -1, k = n, val = 0;
+        while(val <= n*n && k > 0)
+        {
+            for (int l = 0; k > 0 && l < k; l++)
+            {
+                v[i][++j] = ++val;
+            }
+            
+            k--;
+            
+            for (int l = 0; k > 0 && l < k; l++)
+            {
+                v[++i][j] = ++val;
+            }
+            
+            for (int l = 0; k > 0 && l < k; l++)
+            {
+                v[i][--j] = ++val;
+            }
+            
+            k--;
+            
+            for (int l = 0; k > 0 && l < k; l++)
+            {
+                v[--i][j] = ++val;
+            }
+        }
+        
+        return v;
+    }
+};
