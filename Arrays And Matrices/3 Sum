@@ -1,0 +1,56 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums)
+    {
+        vector<vector<int> > v;
+        map<int,int> mp;
+        int n=nums.size();
+        
+       
+        sort(nums.begin(),nums.end());
+      for(int a=0;a<n-2;a++)
+      {
+          if(a==0 || nums[a]!=nums[a-1])
+          {
+           int b=a+1,c=nums.size()-1;
+        while(b<c)
+        {
+            int d=nums[a]+nums[b]+nums[c];
+            if(d==0)
+            {
+                vector<int> an;
+                an.push_back(nums[a]);
+                an.push_back(nums[b]);
+                an.push_back(nums[c]);
+                v.push_back(an);
+                
+                while(b<c && nums[b]==nums[b+1])
+                {
+                    b++;
+                }
+                while(b<c && nums[c]==nums[c-1])
+                {
+                    c--;
+                }
+                b++;
+                c--;
+            }
+            else
+            {
+                 if(d>0)
+                 {
+                    c--;
+                 }
+                 else
+                 {
+                    b++;
+                
+                 }
+            }
+            
+        }
+          }
+      }
+        return v;
+    }
+};
