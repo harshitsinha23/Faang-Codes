@@ -22,10 +22,6 @@ public:
     {
         if(a==NULL||b==NULL)
             return;
-        if(!b)
-        {
-            b->next=NULL;
-        }
         a->next=b;
         
         populate(a->left,a->right);
