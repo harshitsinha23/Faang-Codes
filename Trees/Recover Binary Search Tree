@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void correctBST(TreeNode *node, TreeNode **first, TreeNode **second, TreeNode **prev)
+    {
+        if (node!=NULL)
+        {
+            correctBST(node->left, first, second, prev);
+            if (*prev!=NULL && (*prev)->val>node->val)
+            {
+                if (*first==NULL) *first = *prev;
+                *second = node;
+            }
+            *prev=node;
+            correctBST(node->right, first, second, prev);
+        }
+    }
+    void recoverTree(TreeNode* root) {
+        TreeNode *prev = NULL;
+        TreeNode *first = NULL;
+        TreeNode *second = NULL;
+        correctBST(root, &first, &second, &prev);
+        swap(first->val, second->val);
+    }
+};
